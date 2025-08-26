@@ -1,0 +1,275 @@
+# CropPlus Configuration
+# Enhanced farming plugin with right-click harvesting
+
+# General Settings
+settings:
+  # Enable or disable the plugin functionality
+  enabled: true
+  
+  # Enable debug messages in console
+  debug: false
+  
+  # Check for plugin updates on startup
+  check-updates: true
+
+# Tool Restrictions
+tool-restrictions:
+  # Enable tool requirement for harvesting
+  enabled: true
+  
+  # List of allowed tools for harvesting (empty = any tool allowed)
+  # Valid tools: WOODEN_HOE, STONE_HOE, IRON_HOE, GOLDEN_HOE, DIAMOND_HOE, NETHERITE_HOE
+  # You can also use "ANY_HOE" to allow all hoe types
+  allowed-tools:
+    - "ANY_HOE"
+  
+  # Allow harvesting with bare hands (no tool)
+  allow-bare-hands: false
+  
+  # Per-world tool restrictions
+  world-specific:
+    enabled: false
+    worlds:
+      world:
+        enabled: true
+        allowed-tools:
+          - "ANY_HOE"
+        allow-bare-hands: false
+      world_nether:
+        enabled: true
+        allowed-tools:
+          - "DIAMOND_HOE"
+          - "NETHERITE_HOE"
+        allow-bare-hands: false
+
+# Harvesting Settings
+harvesting:
+  # Enable right-click harvesting
+  enabled: true
+  
+  # Require seeds in inventory for replanting
+  require-seeds: true
+  
+  # Auto-collect settings
+  auto-collect:
+    # Enable auto-collect (items go directly to inventory)
+    enabled: true
+    
+    # If disabled, where to drop items
+    drop-location: "CROP" # CROP, PLAYER, or FEET
+    
+    # Per-world auto-collect settings
+    world-specific:
+      enabled: false
+      worlds:
+        world:
+          auto-collect: true
+          drop-location: "CROP"
+        world_nether:
+          auto-collect: false
+          drop-location: "PLAYER"
+  
+  # Play sound effects when harvesting
+  play-sounds: true
+  
+  # Show particle effects when harvesting
+  show-particles: true
+
+# Mass Harvesting Settings
+mass-harvesting:
+  # Enable mass harvesting (harvest multiple crops at once)
+  enabled: true
+  
+  # Maximum range for mass harvesting (blocks)
+  max-range: 5
+  
+  # Default range for mass harvesting
+  default-range: 3
+  
+  # Require sneak + right-click for mass harvesting
+  require-sneak: true
+  
+  # Maximum crops that can be harvested at once
+  max-crops: 50
+  
+  # Tool restrictions for mass harvesting
+  tool-restrictions:
+    # Require better tools for mass harvesting
+    enabled: false
+    
+    # Minimum tool tier for mass harvesting
+    # WOODEN, STONE, IRON, GOLDEN, DIAMOND, NETHERITE
+    minimum-tier: "IRON"
+
+# Cooldown Settings
+cooldowns:
+  # Enable harvest cooldowns
+  enabled: true
+  
+  # Global cooldown between harvests (seconds)
+  global: 0.5
+  
+  # Per-crop cooldown (seconds)
+  per-crop: 2.0
+  
+  # Mass harvest cooldown (seconds)
+  mass-harvest: 5.0
+
+# World Settings
+worlds:
+  # Enable world restrictions
+  enabled: false
+  
+  # List of allowed worlds (empty = all worlds allowed)
+  allowed: []
+  
+  # List of disabled worlds
+  disabled: []
+
+# Group Settings (requires permission plugin)
+groups:
+  # Enable group-specific settings
+  enabled: false
+  
+  # Group configurations
+  configurations:
+    vip:
+      # Tool restrictions for VIP group
+      tool-restrictions:
+        enabled: false
+        allowed-tools: []
+        allow-bare-hands: true
+      
+      # Auto-collect settings for VIP group
+      auto-collect:
+        enabled: true
+        drop-location: "PLAYER"
+      
+      # Cooldown modifications for VIP group
+      cooldown-multiplier: 0.5
+      
+      # Range bonus for VIP group
+      range-bonus: 2
+    
+    premium:
+      tool-restrictions:
+        enabled: false
+        allowed-tools: []
+        allow-bare-hands: true
+      
+      auto-collect:
+        enabled: true
+        drop-location: "FEET"
+      
+      cooldown-multiplier: 0.25
+      range-bonus: 5
+
+# Crop Settings
+crops:
+  # Supported crop types and their configurations
+  wheat:
+    enabled: true
+    seed-item: "WHEAT_SEEDS"
+    drop-multiplier: 1.0
+    # Tool-specific drop multipliers
+    tool-multipliers:
+      NETHERITE_HOE: 1.5
+      DIAMOND_HOE: 1.3
+      IRON_HOE: 1.1
+  
+  carrots:
+    enabled: true
+    seed-item: "CARROT"
+    drop-multiplier: 1.0
+    tool-multipliers:
+      NETHERITE_HOE: 1.5
+      DIAMOND_HOE: 1.3
+      IRON_HOE: 1.1
+  
+  potatoes:
+    enabled: true
+    seed-item: "POTATO"
+    drop-multiplier: 1.0
+    tool-multipliers:
+      NETHERITE_HOE: 1.5
+      DIAMOND_HOE: 1.3
+      IRON_HOE: 1.1
+  
+  beetroots:
+    enabled: true
+    seed-item: "BEETROOT_SEEDS"
+    drop-multiplier: 1.0
+    tool-multipliers:
+      NETHERITE_HOE: 1.5
+      DIAMOND_HOE: 1.3
+      IRON_HOE: 1.1
+  
+  nether_wart:
+    enabled: true
+    seed-item: "NETHER_WART"
+    drop-multiplier: 1.0
+    tool-multipliers:
+      NETHERITE_HOE: 1.8
+      DIAMOND_HOE: 1.5
+      IRON_HOE: 1.2
+  
+  cocoa:
+    enabled: true
+    seed-item: "COCOA_BEANS"
+    drop-multiplier: 1.0
+    tool-multipliers:
+      NETHERITE_HOE: 1.3
+      DIAMOND_HOE: 1.2
+      IRON_HOE: 1.05
+  
+  sweet_berry_bush:
+    enabled: true
+    seed-item: "SWEET_BERRIES"
+    drop-multiplier: 1.0
+    tool-multipliers:
+      NETHERITE_HOE: 1.4
+      DIAMOND_HOE: 1.25
+      IRON_HOE: 1.1
+
+# Economy Integration (requires Vault)
+economy:
+  # Enable economy rewards for harvesting
+  enabled: false
+  
+  # Reward per crop harvested
+  reward-per-crop: 0.1
+  
+  # Bonus multiplier for mass harvesting
+  mass-harvest-bonus: 1.5
+  
+  # Tool-based economy multipliers
+  tool-multipliers:
+    NETHERITE_HOE: 2.0
+    DIAMOND_HOE: 1.5
+    IRON_HOE: 1.2
+    GOLDEN_HOE: 1.1
+
+# Messages
+messages:
+  prefix: "&a[CropPlus] &f"
+  no-permission: "&cYou don't have permission to use this feature!"
+  feature-disabled: "&cThis feature is currently disabled!"
+  world-not-allowed: "&cCrop harvesting is not allowed in this world!"
+  no-seeds: "&cYou need seeds to replant this crop!"
+  cooldown-active: "&cPlease wait before harvesting again!"
+  crop-harvested: "&aHarvested {amount} {crop}(s)!"
+  mass-harvest-success: "&aHarvested {amount} crops in the area!"
+  economy-reward: "&aEarned {amount} for harvesting!"
+  config-reloaded: "&aConfiguration reloaded successfully!"
+  plugin-info: "&aCropPlus v{version} - Enhanced farming plugin"
+  feature-toggled: "&aFeature toggled {status}!"
+  
+  # Tool restriction messages
+  tool-not-allowed: "&cYou need a proper tool to harvest crops!"
+  tool-required: "&cYou must use a {tool} to harvest this crop!"
+  bare-hands-not-allowed: "&cYou cannot harvest crops with bare hands!"
+  tool-tier-too-low: "&cYou need a better tool for mass harvesting! Minimum: {tier}"
+  
+  # Auto-collect messages
+  inventory-full: "&cYour inventory is full! Items dropped on the ground."
+  auto-collected: "&aItems automatically collected!"

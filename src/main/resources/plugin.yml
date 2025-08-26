@@ -1,0 +1,34 @@
+name: CropPlus
+version: '1.0.0'
+main: com.cropplus.CropPlus
+api-version: '1.21'
+author: Astro Studio
+description: Enhanced farming plugin with right-click harvesting and automatic replanting
+website: https://github.com/Onyxs2007/CropPlus
+softdepend: [Vault]
+
+commands:
+  cropplus:
+    description: Main CropPlus command
+    usage: /cropplus <reload|info|toggle>
+    aliases: [cp, crop]
+
+permissions:
+  cropplus.use:
+    description: Allows using the crop harvesting feature
+    default: true
+  cropplus.admin:
+    description: Allows access to admin commands
+    default: op
+  cropplus.reload:
+    description: Allows reloading the plugin configuration
+    default: op
+  cropplus.bypass.cooldown:
+    description: Bypasses harvest cooldowns
+    default: op
+  cropplus.bypass.world:
+    description: Bypasses world restrictions
+    default: op
+  cropplus.mass.unlimited:
+    description: Allows unlimited mass harvesting range
+    default: op
